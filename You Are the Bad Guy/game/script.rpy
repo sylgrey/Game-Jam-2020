@@ -10,7 +10,93 @@ define s = Character("Superhero")
 default chosen_bait = ""
 default chosen_trap = ""
 
-# The game starts here.
+#==============================================
+'''============================================
+CODE FOR RESEARCH GAME BELOW \/ \/ \/ \/ \/ \/   WARNING WARNING WARNING =======================================================================
+===============================================
+'''#===========================================
+
+##### The game screen
+screen game_scr:
+
+    #  Disable cursor and enter keys
+    key "K_LEFT" action Hide("nonexistent_screen")
+    key "K_RIGHT" action Hide("nonexistent_screen")
+    key "K_UP" action Hide("nonexistent_screen")
+    key "K_DOWN" action Hide("nonexistent_screen")
+    key "K_RETURN" action Hide("nonexistent_screen")
+    key "K_KP_ENTER" action Hide("nonexistent_screen")
+
+    ##### Timer
+    # Returns "" every second, or returns "end" (if time is up)
+    timer 1 action [Return(""), If( game_timer<1, Return("end"), SetVariable("game_timer", game_timer-1) ) ] repeat True
+    
+    text "[game_timer]" size 25 xpos 10 ypos 10
+
+
+    for popup in sorted(all_popups, reverse=True):
+        if popup["showImage"]:
+            $ text_var = popup["img"]
+            $ i = popup["popup_num"] - 1
+            button:
+
+                background None
+                add popup["img"]
+
+                xpos popup["x"]
+                ypos popup["y"]
+                anchor (0.5, 0.5)
+                action If (i == -1, SetDict(all_popups[popup["popup_num"] ], "showImage", False),
+                    If (all_popups[i]["showImage"] == False,
+                        SetDict(all_popups[popup["popup_num"] ], "showImage", False),
+                        SetVariable("game_timer", game_timer-1) )  )          # Wrong click reduces the time left by 1 second
+
+init:
+    image img1:
+        "popup.png"
+        zoom 1
+
+label research_game:
+
+    $ all_popups = []
+    $ popup_images = ["img1"]
+
+    # This will make the description for all buttons (numbers, values and positions)
+    python:
+        for i in range (0, 10):
+            all_popups.append ( { "popup_num":i,
+                                   "img":popup_images[renpy.random.randint (0, len(popup_images)-1)],
+                                   "x":(renpy.random.randint (30, 90))*10,
+                                   "y":(renpy.random.randint (15, 50))*10,
+                                   "showImage":True
+                                  } )
+
+    # Before start the game, let's set the timer
+    $ game_timer = 10
+
+    # Shows the game screen
+    show screen game_scr
+
+    # Gameplay loop
+    label loop:
+        $ result = ui.interact()
+        $ game_timer = game_timer
+        if result == "":
+            jump loop
+
+    hide screen game_scr
+    $ renpy.pause (0.1, hard = True)
+    $ renpy.pause (0.1, hard = True)
+    $ renpy.pause (0.1, hard = True)
+    $ renpy.pause (0.1, hard = True)
+
+    return
+
+#==============================================
+''' ===========================================
+CODE FOR RESEARCH GAME ABOVE /\ /\ /\ /\ /\ /\   WARNING WARNING WARNING =======================================================================
+===============================================
+'''#===========================================
 
 label start:
 
@@ -28,8 +114,12 @@ label start:
     v "Well, I’m still coming up with it, you see. Scuttle along, John and Mira, leave me to my dark work! You’re bothering me."
     h "Sorry, Boss! Of course, Boss!"
 
+    scene bg comp
+    call research_game
+    scene bg main
+
     menu:
-        # TODO make these equal a piece of writing for use on line 61
+        # TODO make these equal a piece of writing for use in label bait
         "Birthday card":
             $ chosen_bait = "bday"
         "Mom":

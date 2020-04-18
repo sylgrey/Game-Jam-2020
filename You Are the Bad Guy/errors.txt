@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 60: expected statement.
-    v chosen_bait + ", and quickly! As they say in showbiz- motivation is everything."
-                  ^
+File "game/script.rpy", line 22: u'scene' is not a keyword argument or valid child for the screen statement.
+    scene bg comp
+         ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sat Apr 18 14:21:24 2020
+Sat Apr 18 16:25:04 2020

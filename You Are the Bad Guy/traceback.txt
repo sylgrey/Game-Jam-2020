@@ -1,28 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 60, in script
-    v chosen_bait ", and quickly! As they say in showbiz- motivation is everything."
-Exception: Say has image attributes (u'chosen_bait',), but there's no image tag associated with the speaking character.
+  File "game/script.rpy", line 114, in script call
+    call research_game
+  File "game/script.rpy", line 62, in script
+    $ buttons_values = [img1]
+  File "game/script.rpy", line 62, in <module>
+    $ buttons_values = [img1]
+NameError: name 'img1' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 60, in script
-    v chosen_bait ", and quickly! As they say in showbiz- motivation is everything."
-  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 708, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\exports.py", line 1345, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\character.py", line 1073, in __call__
-    old_attr_state = self.handle_say_attributes(False, interact)
-  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\character.py", line 942, in handle_say_attributes
-    if self.resolve_say_attributes(predicting, attrs):
-  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\character.py", line 868, in resolve_say_attributes
-    raise Exception("Say has image attributes %r, but there's no image tag associated with the speaking character." % (attrs,))
-Exception: Say has image attributes (u'chosen_bait',), but there's no image tag associated with the speaking character.
+  File "game/script.rpy", line 114, in script call
+    call research_game
+  File "game/script.rpy", line 62, in script
+    $ buttons_values = [img1]
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 62, in <module>
+    $ buttons_values = [img1]
+NameError: name 'img1' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 You Are the Bad Guy 1.0
-Sat Apr 18 14:21:58 2020
+Sat Apr 18 16:15:15 2020
