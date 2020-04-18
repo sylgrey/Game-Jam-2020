@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 60: expected statement.
+    v chosen_bait + ", and quickly! As they say in showbiz- motivation is everything."
+                  ^
+
+Ren'Py Version: Ren'Py 7.3.5.606
+Sat Apr 18 14:21:24 2020
