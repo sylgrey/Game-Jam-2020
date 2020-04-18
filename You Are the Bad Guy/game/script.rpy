@@ -74,10 +74,10 @@ label bait:
             $ chosen_trap = "pool"
 
         "Pitfall":
-            v "I think I shall set up Paul's Ideal Fall Apparatus."
+            v "I think I shall set up Paul's Ideal Tumbling Fall Apparatus."
             h "What... are L’s for?"
             v "Check the manual, Mira!"
-            h "P-I-T-F-A-C-T-M-M?"
+            h "P.I.T.F.A....C.M.M?"
             v "Yes. Set up the Pitfactmm."
 
             $ chosen_trap = "pitfall"
