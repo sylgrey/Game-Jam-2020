@@ -9,20 +9,6 @@ define s = Character("Superhero")
 
 default chosen_bait = ""
 default chosen_trap = ""
-default pool = False
-default pitfall = False
-default ray = False
-default walls = False
-default no = False
-default spikes = False
-default pasta = False
-default sharks = False
-default fire = False
-default water = False
-default chicken = False
-default dino = False
-default trumpet = False
-default pillow = False
 
 #==============================================
 '''============================================
@@ -33,15 +19,6 @@ CODE FOR RESEARCH GAME BELOW \/ \/ \/ \/ \/ \/   WARNING WARNING WARNING =======
 ##### The game screen
 screen game_scr:
 
-    side "c b r":
-
-        viewport id "vp":
-            mousewheel True
-            add "twitter main.jpg" zoom 1.1
-
-        bar value XScrollValue("vp")
-        vbar value YScrollValue("vp")
-
     #  Disable cursor and enter keys
     key "K_LEFT" action Hide("nonexistent_screen")
     key "K_RIGHT" action Hide("nonexistent_screen")
@@ -50,33 +27,29 @@ screen game_scr:
     key "K_RETURN" action Hide("nonexistent_screen")
     key "K_KP_ENTER" action Hide("nonexistent_screen")
 
-    # Timer ===
-    # Returns "" every second, or returns "end" if time is up
+    ##### Timer
+    # Returns "" every second, or returns "end" (if time is up)
     timer 1 action [Return(""), If( game_timer<1, Return("end"), SetVariable("game_timer", game_timer-1) ) ] repeat True
-<<<<<<< Updated upstream
-    
-    text "{color=#000000}Automatic Windows Update in [game_timer] seconds{/color}" size 25 xpos 10 ypos 10
-=======
 
     text "[game_timer]" size 25 xpos 10 ypos 10
->>>>>>> Stashed changes
 
 
     for popup in sorted(all_popups, reverse=True):
         if popup["showImage"]:
+            $ text_var = popup["img"]
             $ i = popup["popup_num"] - 1
             button:
 
                 background None
                 add popup["img"]
+
                 xpos popup["x"]
                 ypos popup["y"]
                 anchor (0.5, 0.5)
-
-                # hides the popup on click so it won't be redrawn
                 action If (i == -1, SetDict(all_popups[popup["popup_num"] ], "showImage", False),
                     If (all_popups[i]["showImage"] == False,
-                        SetDict(all_popups[popup["popup_num"] ], "showImage", False)))
+                        SetDict(all_popups[popup["popup_num"] ], "showImage", False),
+                        SetVariable("game_timer", game_timer-1) )  )          # Wrong click reduces the time left by 1 second
 
 init:
     image img1:
@@ -88,39 +61,30 @@ label research_game:
     $ all_popups = []
     $ popup_images = ["img1"]
 
+    # This will make the description for all buttons (numbers, values and positions)
+    python:
+        for i in range (0, 10):
+            all_popups.append ( { "popup_num":i,
+                                   "img":popup_images[renpy.random.randint (0, len(popup_images)-1)],
+                                   "x":(renpy.random.randint (30, 90))*10,
+                                   "y":(renpy.random.randint (15, 50))*10,
+                                   "showImage":True
+                                  } )
+
     # Before start the game, let's set the timer
-    $ game_timer = 20
+    $ game_timer = 10
 
     # Shows the game screen
     show screen game_scr
-    "Damnit, I really shouldn't have installed all those viruses for fun."
-    "I'll just click these to get rid of them..."
-    window hide
 
     # Gameplay loop
     label loop:
-        $ all_popups = []
-        $ popup_images = ["img1"]
-
-        # This will make the description for all buttons (numbers, values and positions)
-        python:
-            for i in range (0, 1):
-                all_popups.append ( {
-                    "popup_num":i,
-                    "img":popup_images[renpy.random.randint (0, len(popup_images)-1)],
-                    "x":(renpy.random.randint (30, 90))*10,
-                    "y":(renpy.random.randint (15, 50))*10,
-                    "showImage":True
-                    } )
         $ result = ui.interact()
         $ game_timer = game_timer
         if result == "":
             jump loop
 
     hide screen game_scr
-    "Ah shit! Stupid automatic Windows updates."
-    "Nevertheless, I think I know just what to bait Mister Super with now..."
-
     $ renpy.pause (0.1, hard = True)
     $ renpy.pause (0.1, hard = True)
     $ renpy.pause (0.1, hard = True)
@@ -138,8 +102,8 @@ label start:
 
     scene bg main
 
-    show villain smile at left
-    show hench stand at right
+    show villain smile at right
+    show hench stand at left
 
     v "Why, how I am enjoying this absolutely awful and contemptible Sunday! Not a care in the world, free as a little, plague-ridden bird. All villainous video games, no villainous work."
     h "Boss! It’s your responsibilities knocking!"
@@ -150,30 +114,32 @@ label start:
     v "Well, I’m still coming up with it, you see. Scuttle along, John and Mira, leave me to my dark work! You’re bothering me."
     h "Sorry, Boss! Of course, Boss!"
 
+    scene bg comp
     call research_game
+    scene bg main
 
     menu:
         # TODO make these equal a piece of writing for use in label bait
         "Birthday card":
-            $ chosen_bait = "A birthday card"
+            $ chosen_bait = "bday"
         "Mom":
             $ chosen_bait = "mom"
         "Shiny Charizard POKeMON(tm) card":
-            $ chosen_bait = "A rare Pokemon card"
+            $ chosen_bait = "pkmn"
         "Underwear":
-            $ chosen_bait = "Underwear"
+            $ chosen_bait = "underwear"
         "Mac and cheese":
-            $ chosen_bait = "Mac and Cheese"
+            $ chosen_bait = "mac"
         "A dirty bowl":
-            $ chosen_bait = "A dirty, nasty bowl"
+            $ chosen_bait = "bowl"
         "Dog":
-            $ chosen_bait = "An innocent puppy"
+            $ chosen_bait = "dog"
         "Cardboard box":
-            $ chosen_bait = "A simple cardboard box"
+            $ chosen_bait = "box"
         "Husband":
-            $ chosen_bait = "His husband"
+            $ chosen_bait = "husband"
         "Silly glasses with mustache":
-            $ chosen_bait = "Some silly glasses"
+            $ chosen_bait = "glasses"
 
     jump bait
 
@@ -196,7 +162,6 @@ label bait:
             v "Absolutely fantastic, Mira! Put out a memo. After the hero's death, pool party!"
 
             $ chosen_trap = "pool"
-            $ pool = True
 
         "Pitfall":
             v "I think I shall set up Paul's Ideal Tumbling Fall Apparatus."
@@ -206,7 +171,6 @@ label bait:
             v "Yes. Set up the Pitfactmm."
 
             $ chosen_trap = "pitfall"
-            $ pitfall = True
 
         "Freeze ray":
             v "I believe the freeze ray shall come most in handy. Why I am absolutely... shivering.... With glee."
@@ -215,7 +179,6 @@ label bait:
             h "Ok boss."
 
             $ chosen_trap = "ray"
-            $ ray = True
 
         "Closing walls":
             v "Have the doors that are much thicker and open except for when the hero comes been installed yet, John?"
@@ -223,7 +186,6 @@ label bait:
             h "Precisely! Great job, John!"
 
             $ chosen_trap = "walls"
-            $ walls = True
 
         "Traps are a coward's game":
             v "Traps are a coward's game. Mira, John- I think today is the day we face our enemies head on."
@@ -231,92 +193,11 @@ label bait:
             v "Why, of course not. My genius logic is beyond you, as usual. Wait and watch."
 
             $ chosen_trap = "no trap"
-            $ no = True
+
+label trap:
+
+    return
 
 label kill:
-
-h "You got it, Boss! And what'll be the killing blow?"
-v "I'm way ahead of you, Mira, and do not rush me!"
-v "Hm... uh...Oh! I know just the thing."
-
-menu:
-    "Spikes":
-            v "Scatter the spikes, my good friend. I believe we have a nasty little hero to skewer."
-            h "Great idea, Boss! A hero kebab!"
-
-            $ spikes = True
-
-    "Spaghetti":
-            v "Last potluck, do you remember, we ALL made spaghetti by sheer coincidence?"
-            h "Yeah, haha. Carb night."
-            v "Yes, but today, it's DIE night!"
-
-            $ pasta = True
-
-    "Sharks":
-        v "Suit up, my little guppies. Retrieve Jimmy, Martin, and John 2 from the tanks! They are going to have a SUPER lunch."
-        h "I thought we had been promoted to bass, Boss?"
-
-        $ sharks = True
-
-    "Fire":
-        v "Call me Daddy Satan, because it's about to got hot in here! The flame jets, my little devils!"
-        h "Oh, is is Friday night already?!"
-
-        $ fire = True
-
-    "Water":
-        v "With haste, Henchmen! Fill this bucket with water from the tap. I'd LAKE it to be a little more WET in here."
-        h "4/10, Boss."
-        v "I try my best."
-
-        $ water = True
-
-    "Chicken":
-        v "Fetch my leftovers, Mira! When we're through with this detestable super, they truly won't know what hit them.."
-        h "The chicken, Boss?"
-        v "Yes, that's what I said."
-
-        $ chicken = True
-
-    "Dinosaur":
-        v "Loose the raptor cage. It's about to get Jurassic Park in this lair of villainly and evil. Doctor Faye Tality? More like, Doctor Alan Grant."
-        h "Do you want all of the raptors, Boss?"
-        v "No. Just Sasha and Bellamonte. Greogy and Harold are naughty boys."
-
-        $ dino = True
-
-    "Big Trumpet":
-        v "Toot toot, John. Toot toot."
-        h "The trumpet, STAT!"
-
-        $ trumpet = True
-
-    "Pillow":
-        v "What time is it, Mira?"
-        h "2:00 on the dot, Boss."
-        v "Precisely as I thought. Nefarious Nap Time."
-
-        $ pillow = True
-
-if pool and spikes:
-    jump pool_spikes
-
-label pool_spikes:
-    "Your henchman spend time carefully opening the pool and scattering spikes at the bottom, arraying them in a pattern of doom and death. It seems to you a stroke of genius."
-    v "Yes. This seems like a stroke of genius to me."
-    h "Are you... congratulating yourself?"
-    v "Nobody else was doing it and I need my ego high before this encounter. Mister Super has a way of getting under my skin..."
-    s "Did someone say MISTER SUPER?"
-    v "God, no-"
-    s "It is I, Mister Super, here to put an end to your dastardly deeds for the last time, Doctor Faye Tality!"
-    v "I’m sure you are, Mister Super. But were you expecting THIS?"
-    "With a yank of a nearby lever, Mister Super is yanked up into the air by a large mechanical claw."
-    s "What’s this?!"
-    v "Your doom."
-    "He struggles against the claws, pulling at them with all he has. But not even his Mister Super Super Strength(TM) can save him now."
-    "You hit the button atop the level, and the claw releases. Mister Super falls, impaled on the spikes scattered at the bottom of the pool."
-    v "...."
-    v "I can’t believe that worked."
 
     return
