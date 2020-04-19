@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿I'm sorry, but errors were detected in your script. Please correct the
 errors listed below, and try again.
 
@@ -8,3 +9,15 @@ File "game/options.rpy", line 6: expected statement.
 
 Ren'Py Version: Ren'Py 7.3.5.606
 Sat Apr 18 21:45:14 2020
+=======
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 282: end of line expected.
+    if pool and spikes: jump pool_spikes
+                        ^
+
+Ren'Py Version: Ren'Py 7.3.5.606
+Sat Apr 18 20:38:17 2020
+>>>>>>> Stashed changes
