@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 22: u'scene' is not a keyword argument or valid child for the screen statement.
-    scene bg comp
-         ^
+File "game/options.rpy", line 6: expected statement.
+    config.rollback_enabled = False
+                            ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sat Apr 18 16:25:04 2020
+Sat Apr 18 21:45:14 2020

@@ -1,30 +1,77 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 114, in script call
+  File "game/script.rpy", line 133, in script call
     call research_game
-  File "game/script.rpy", line 62, in script
-    $ buttons_values = [img1]
-  File "game/script.rpy", line 62, in <module>
-    $ buttons_values = [img1]
-NameError: name 'img1' is not defined
+  File "game/script.rpy", line 96, in script
+    $ result = ui.interact()
+  File "game/script.rpy", line 96, in <module>
+    $ result = ui.interact()
+  File "game/script.rpy", line 20, in execute
+    screen game_scr:
+  File "game/script.rpy", line 20, in execute
+    screen game_scr:
+  File "game/script.rpy", line 46, in execute
+    for popup in sorted(all_popups, reverse=True):
+  File "game/script.rpy", line 47, in execute
+    if popup["showImage"]:
+  File "game/script.rpy", line 49, in execute
+    button:
+  File "game/script.rpy", line 49, in keywords
+    button:
+IndexError: list index out of range
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 114, in script call
+  File "game/script.rpy", line 133, in script call
     call research_game
-  File "game/script.rpy", line 62, in script
-    $ buttons_values = [img1]
+  File "game/script.rpy", line 96, in script
+    $ result = ui.interact()
   File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "game/script.rpy", line 62, in <module>
-    $ buttons_values = [img1]
-NameError: name 'img1' is not defined
+  File "game/script.rpy", line 96, in <module>
+    $ result = ui.interact()
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\ui.py", line 297, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 20, in execute
+    screen game_scr:
+  File "game/script.rpy", line 20, in execute
+    screen game_scr:
+  File "game/script.rpy", line 46, in execute
+    for popup in sorted(all_popups, reverse=True):
+  File "game/script.rpy", line 47, in execute
+    if popup["showImage"]:
+  File "game/script.rpy", line 49, in execute
+    button:
+  File "game/script.rpy", line 49, in keywords
+    button:
+  File "<screen language>", line 58, in <module>
+  File "C:\Users\Emily Jonatan\Downloads\renpy-7.3.5-sdk\renpy\python.py", line 847, in __getitem__
+    rv = list.__getitem__(self, index)
+IndexError: list index out of range
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 You Are the Bad Guy 1.0
-Sat Apr 18 16:15:15 2020
+Sat Apr 18 22:37:46 2020
