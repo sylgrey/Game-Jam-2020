@@ -1,7 +1,11 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Sat Apr 18 22:57:22 2020
 =======
 Sat Apr 18 22:53:15 2020
+>>>>>>> Stashed changes
+=======
+Sun Apr 19 00:38:21 2020
 >>>>>>> Stashed changes
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
@@ -9,17 +13,18 @@ Ren'Py 7.3.5.606
 
 <<<<<<< Updated upstream
 Bootstrap to the start of init.init took 0.07s
-Early init took 0.01s
-Loader init took 0.03s
-Loading error handling took 0.04s
-Loading script took 0.23s
-Loading save slot metadata. took 0.01s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.03s
+Loading script took 0.10s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
 Running init code took 0.08s
-Loading analysis data took 0.04s
+Loading analysis data took 0.03s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
+<<<<<<< Updated upstream
 Backing up script files to 'C:\\Users\\Emily Jonatan\\AppData\\Roaming/RenPy/backups\\You Are the Bad Guy':
 Dump and make backups. took 1.89s
 =======
@@ -38,20 +43,29 @@ Index archives took 0.00s
 Backing up script files to 'C:\\Users\\darkt\\AppData\\Roaming/RenPy/backups\\You Are the Bad Guy':
 Dump and make backups. took 0.11s
 >>>>>>> Stashed changes
+=======
+Dump and make backups. took 1.95s
+>>>>>>> Stashed changes
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.02s
+Initial gc. took 0.01s
 DPI scale factor: 1.000000
-Creating interface object took 0.08s
+Creating interface object took 0.06s
 Cleaning stores took 0.00s
 Init translation took 0.03s
 Build styles took 0.01s
+<<<<<<< Updated upstream
 Load screen analysis took 0.00s
 <<<<<<< Updated upstream
 Analyze screens took 0.01s
 Save screen analysis took 0.06s
+=======
+Load screen analysis took 0.07s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+>>>>>>> Stashed changes
 Prepare screens took 0.06s
-Save pyanalysis. took 0.11s
+Save pyanalysis. took 0.00s
 Save bytecode. took 0.06s
 Running _start took 0.00s
 =======
@@ -323,6 +337,7 @@ Texture testing:
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Total time until interface ready: 3.94799995422s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
@@ -358,4 +373,28 @@ Total time until interface ready: 6.42499995232s
 - 0.425000 seconds to render 5 frames.
 - Frame drawn at 0.886667 seconds.
 - 0.257000 seconds to render 5 frames.
+>>>>>>> Stashed changes
+=======
+Total time until interface ready: 3.76099991798s
+- Target is 5 frames in 0.333333333333 seconds.
+- Frame drawn at 0.000000 seconds.
+- Frame drawn at 0.017667 seconds.
+- Frame drawn at 0.121667 seconds.
+- Frame drawn at 0.137667 seconds.
+- Frame drawn at 0.216667 seconds.
+- 0.216667 seconds to render 5 frames.
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1280, 720) physical=(1920, 1017) drawable=(1920, 1017)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
 >>>>>>> Stashed changes

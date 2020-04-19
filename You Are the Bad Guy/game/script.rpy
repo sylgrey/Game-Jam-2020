@@ -145,9 +145,7 @@ label start:
     v "Well, I’m still coming up with it, you see. Scuttle along, John and Mira, leave me to my dark work! You’re bothering me."
     h "Sorry, Boss! Of course, Boss!"
 
-    scene bg comp
     call research_game
-    scene bg main
 
     menu:
         # TODO make these equal a piece of writing for use in label bait
